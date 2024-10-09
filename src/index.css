@@ -1,0 +1,96 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+ font-family: "Kumbh Sans", sans-serif;
+
+ --color-orange: hsl(26, 100%, 55%);
+ --color-pale-orange: hsl(26, 100%, 70%);
+ --color-dark-blue: hsl(220, 13%, 13%);
+ --color-dark-grayish-blue: hsl(219, 9%, 45%);
+ --color-grayish-blue: hsl(220, 14%, 75%);
+ --color-light-grayish-blue: hsl(223, 64%, 98%);
+
+ --brightness: 1;
+}
+
+.max-width-container {
+ width: 85vw;
+ max-width: 1100px;
+ margin: 0 auto;
+}
+
+.scrollbar-none {
+ scrollbar-width: none;
+}
+
+button.scroll-button {
+ background-color: var(--color-light-grayish-blue);
+ border-radius: 100%;
+ padding: 1rem;
+ pointer-events: auto;
+ transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+button.scroll-button:disabled {
+ opacity: 0.5;
+}
+
+button.quantity-button {
+ align-content: center;
+ color: var(--color-orange);
+ padding: 0 1rem;
+ transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+button.standard-button {
+ background-color: var(--color-orange);
+ border-radius: 0.5rem;
+ color: var(--color-dark-blue);
+ font-weight: 800;
+ transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+button.thumbnail-button {
+ transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+button:is(.thumbnail-button, .quantity-button, .standard-button):disabled {
+ opacity: 0.25;
+}
+
+div:has(> button.thumbnail-button:disabled) {
+ box-shadow: 0 0 0 2px var(--color-orange);
+}
+
+@media (hover: hover) {
+ button.scroll-button:enabled:hover {
+  color: var(--color-orange);
+ }
+
+ button.standard-button:enabled:hover {
+  background-color: var(--color-pale-orange);
+ }
+
+ button.quantity-button:enabled:hover {
+  opacity: 0.6;
+ }
+
+ button.thumbnail-button:enabled:hover {
+  opacity: 0.5;
+ }
+}
+
+dialog:modal::backdrop {
+ background-color: transparent;
+ backdrop-filter: brightness(var(--brightness));
+}
+
+.price::before {
+ content: "$";
+}
+
+.percentage::after {
+ content: "%";
+}
